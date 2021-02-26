@@ -8,7 +8,7 @@ Simple JS package to highlight DOM elements with some animation
 [Download File](https://raw.githubusercontent.com/arthursb2016/animated-highlight.js/main/src/index.js)
 
 ```
-<script src="animated-highlight.js"></script>
+<script src="animated-highlight.js" type="module"></script>
 ```
 
 #### NPM
@@ -72,4 +72,14 @@ animatedHighlight('container'); // with default options
 
 ## Examples
 
-...to be continued
+#### direction sequence
+
+```
+const options = {
+  directions: ['right top', 'circle'],
+};
+
+animatedHighlight('elementId', options);
+```
+
+![first example](/examples/1.gif "first example")
