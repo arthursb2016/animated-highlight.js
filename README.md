@@ -93,8 +93,8 @@ const options = {
     'left top',
     'circle',
   ],
-  colorA: '#3366cc',
-  colorB: '#aec2ea',
+  colorA: 'rgb(51, 102, 204)',
+  colorB: 'rgb(174, 194, 234)',
 };
 
 animatedHighlight('elementId', options);

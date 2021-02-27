@@ -6,18 +6,30 @@ const zeroFill = (number, width) => {
   return number;
 };
 
-const hexToRgb = (hex) => {
-  hex = hex.replace('#', '');
-  if (hex.length !== 3 && hex.length !== 6) {
-    return [255,255,255];
+const hexToRgb = (color) => {
+  const defaultReturn = [255, 255, 255];
+  const isRgb = color.match(/^rgb\(/);
+
+  if (isRgb) {
+    const rgb = color.split(',');
+    if (rgb.length !== 3) return defaultReturn;
+    const r = parseInt(rgb[0].replace(/\D/g, ''));
+    const g = parseInt(rgb[1].replace(/\D/g, ''));
+    const b = parseInt(rgb[2].replace(/\D/g, ''));
+    return [r, g, b];
   }
-  if (hex.length === 3) {
-    hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+
+  color = color.replace('#', '');
+  if (color.length !== 3 && color.length !== 6) {
+    return defaultReturn;
   }
-  const r = parseInt(hex.substr(0, 2), 16);
-  const g = parseInt(hex.substr(2, 2), 16);
-  const b = parseInt(hex.substr(4, 2), 16);
-  return [r,g,b];
+  if (color.length === 3) {
+    color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
+  }
+  const r = parseInt(color.substr(0, 2), 16);
+  const g = parseInt(color.substr(2, 2), 16);
+  const b = parseInt(color.substr(4, 2), 16);
+  return [r, g, b];
 };
 
 const rgbToHex = (color) => {
@@ -31,7 +43,6 @@ const generateGradient = (color1, color2) => {
   const STEPS = 5;
 
   const gradient = [];
-  
   color1 = hexToRgb(color1);
   color2 = hexToRgb(color2);
 
