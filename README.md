@@ -25,7 +25,7 @@ yarn add animated-highlight.js
 ## How to use
 
 ```
-import { animatedHighlight } from 'animated-highlight.js';
+import animatedHighlight from 'animated-highlight.js';
 
 const elem = document.getElementById('container');
 const options = { speed: 'fast' };
