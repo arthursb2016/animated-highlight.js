@@ -124,7 +124,7 @@ const getDirections = (options) => {
   return options.directions.filter(availableDirectionsFilter);
 };
 
-const animatedHighlight = (element, params = {}) => {
+export default (element, params = {}) => {
   if (typeof element === 'string') {
     element = document.getElementById(element.replace(/^\#/, ''));
   }
@@ -206,5 +206,3 @@ const animatedHighlight = (element, params = {}) => {
 
   animate(0, directions[directionsIndex]);
 };
-
-export animatedHighlight;

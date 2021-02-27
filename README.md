@@ -14,18 +14,18 @@ Simple JS package to highlight DOM elements with some animation
 #### NPM
 
 ```
-npm i animated-highlight
+npm i animated-highlight.js
 ```
 
 #### YARN
 
 ```
-yarn add animated-highlight
+yarn add animated-highlight.js
 ```
 ## How to use
 
 ```
-import { animatedHighlight } from 'animated-highlight';
+import { animatedHighlight } from 'animated-highlight.js';
 
 const elem = document.getElementById('container');
 const options = { speed: 'fast' };

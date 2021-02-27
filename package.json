@@ -1,0 +1,24 @@
+{
+  "name": "animated-highlight.js",
+  "version": "1.0.0",
+  "description": "Simple JS package to highlight DOM elements with some animation",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "animation",
+    "highlight",
+    "javascript"
+  ],
+  "author": "Arthur Borba",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthursb2016/animated-highlight.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arthursb2016/animated-highlight.js/issues"
+  },
+  "homepage": "https://github.com/arthursb2016/animated-highlight.js/blob/main/README.md"
+}
