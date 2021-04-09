@@ -1,10 +1,11 @@
 {
   "name": "animated-highlight.js",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Simple JS package to highlight DOM elements with some animation",
-  "main": "src/index.js",
+  "main": "src/index.min.js",
   "scripts": {
-    "start": "node src/index.js"
+    "prepare" : "uglifyjs -o src/index.min.js src/index.js",
+    "start": "node src/index.min.js"
   },
   "keywords": [
     "animation",
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/arthursb2016/animated-highlight.js/issues"
   },
-  "homepage": "https://github.com/arthursb2016/animated-highlight.js/blob/main/README.md"
+  "homepage": "https://github.com/arthursb2016/animated-highlight.js/blob/main/README.md",
+  "devDependencies": {
+    "uglify-js": "^3.13.3"
+  },
 }
