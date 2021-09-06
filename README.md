@@ -141,7 +141,7 @@ const options = {
   colorB: '#ffffff',
   speed: 'slow',
   trembleDirection: 'vertical',
-  trembleMode: 'soft',
+  trembleMode: 'hard',
 };
 
 animatedHighlight('elementId', options);

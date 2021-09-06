@@ -12,12 +12,12 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      background: lightgray;
+      background: #e6e6e6;
     }
     #div {
       background: #ffffff;
       width: 30%;
-      height: 30%;
+      height: 40%;
       border:  1px solid lightgray;
       color:  gray;
       border-radius: 5px;
@@ -25,6 +25,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      font-size: 2rem;
     }
   </style>
 </head>
@@ -39,7 +40,7 @@
       colorB: '#ffffff',
       speed: 'slow',
       trembleDirection: 'vertical',
-      trembleMode: 'soft',
+      trembleMode: 'hard',
     };
 
     animatedHighlight('div', options);
