@@ -138,7 +138,7 @@ const defaultOptions = {
   directions: [],
   speed: 'medium',
   speeds: {},
-  tremble: false,
+  tremble: null,
   trembleMode: 'default',
   onDone: null,
 };
