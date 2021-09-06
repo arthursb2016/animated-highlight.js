@@ -92,16 +92,6 @@ const speedOptions = {
   superslow: 140,
 };
 
-const defaultOptions = {
-  colorA: '#4BB543',
-  colorB: '#ffffff',
-  direction: 'bottom',
-  directions: [],
-  speed: 'medium',
-  speeds: {},
-  onDone: null,
-};
-
 const availableDirections = [
   'right top',
   'right',
@@ -124,7 +114,35 @@ const getDirections = (options) => {
   return options.directions.filter(availableDirectionsFilter);
 };
 
-export default (element, params = {}) => {
+const trembleParams = {
+  soft: {
+    speed: 100,
+    value: 1,
+  },
+  default: {
+    speed: 80,
+    value: 2,
+  },
+  hard: {
+    speed: 50,
+    value: 3,
+  },
+};
+
+const defaultOptions = {
+  colorA: '#4BB543',
+  colorB: '#ffffff',
+  direction: 'bottom',
+  directions: [],
+  speed: 'medium',
+  speeds: {},
+  tremble: false,
+  trembleMode: 'default',
+  onDone: null,
+};
+
+// TODO: goback to 'export default'
+const animatedHighlight = (element, params = {}) => {
   if (typeof element === 'string') {
     element = document.getElementById(element.replace(/^\#/, ''));
   }
@@ -176,6 +194,9 @@ export default (element, params = {}) => {
       if (options.onDone && typeof options.onDone === 'function') {
         options.onDone();
       }
+      setTimeout(() => {
+        clearInterval(trembleInterval);
+      }, 138);
       return;
     }
 
@@ -202,6 +223,28 @@ export default (element, params = {}) => {
   if (!directions.length) {
     console.error('invalid directions');
     return;
+  }
+
+  // TODO: check current element position
+  element.style.position = 'relative';
+
+  let trembleInterval;
+
+  if (options.tremble) {
+    let trembleConfig = { ...trembleParams[defaultOptions.trembleMode] };
+
+    if (trembleParams[options.trembleMode]) {
+      trembleConfig = { ...trembleParams[options.trembleMode] };
+    }
+
+    let trembleCounter = 0;
+
+    trembleInterval = setInterval(() => {
+      const tDirection = options.tremble === 'horizontal' ? 'left' : 'top';
+      const tValue = `${trembleCounter % 2 === 0 ? '' : '-'}${trembleConfig.value}`;
+      element.style[tDirection] = `${tValue}px`;
+      trembleCounter++;
+    }, trembleConfig.speed);
   }
 
   animate(0, directions[directionsIndex]);
