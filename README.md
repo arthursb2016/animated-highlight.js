@@ -47,7 +47,7 @@ animatedHighlight('container'); // with default options
 | directions     | array  | directions sequence (overrides direction) | [] |
 | speed     | string  | animation speed (see options below) | medium |
 | speeds     | object  | specific speed for a given direction | {} |
-| trembleDirection | string | trembles the element while animating | null |
+| tremble | string | trembles the element while animating | null |
 | trembleMode | string | options: 'soft', 'default' or 'hard' | default
 | onDone     | function  | callback function after animation is done | null |
 
@@ -72,12 +72,12 @@ animatedHighlight('container'); // with default options
 * slow
 * superslow
 
-#### Available Tremble directions
+#### Tremble values
 
 * horizontal
 * vertical
 
-> warning: requires element's position as 'relative', 'absolute' or 'fixed'
+> *warning: requires element's position as 'relative', 'absolute' or 'fixed'*
 
 ## Examples
 
@@ -140,7 +140,7 @@ const options = {
   colorA: '#FFCCCC',
   colorB: '#ffffff',
   speed: 'slow',
-  trembleDirection: 'vertical',
+  tremble: 'vertical',
   trembleMode: 'hard',
 };
 

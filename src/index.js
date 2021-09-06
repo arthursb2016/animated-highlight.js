@@ -138,7 +138,7 @@ const defaultOptions = {
   directions: [],
   speed: 'medium',
   speeds: {},
-  trembleDirection: null,
+  tremble: null,
   trembleMode: 'default',
   onDone: null,
 };
@@ -234,7 +234,7 @@ export default (element, params = {}) => {
 
   const { position } = originalStyle;
 
-  if (options.trembleDirection && requiredTremblePositions.includes(position)) {
+  if (options.tremble && requiredTremblePositions.includes(position)) {
     let trembleConfig = { ...trembleParams[defaultOptions.trembleMode] };
 
     if (trembleParams[options.trembleMode]) {
@@ -243,7 +243,7 @@ export default (element, params = {}) => {
 
     let trembleCounter = 0;
 
-    const tDirection = options.trembleDirection === 'horizontal' ? 'left' : 'top';
+    const tDirection = options.tremble === 'horizontal' ? 'left' : 'top';
     const offsetTValue = (originalStyle[tDirection] || 0).replace('px', '');
 
     trembleInterval = setInterval(() => {

@@ -1,6 +1,6 @@
 {
   "name": "animated-highlight.js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simple JS package to highlight DOM elements with some animation",
   "main": "src/index.min.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "animated",
     "highlight",
     "tremble",
-    "colorful"
+    "color"
   ],
   "author": "Arthur Borba",
   "license": "MIT",
