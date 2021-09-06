@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Animated Highlight</title>
+  <script src="./index.js"></script>
+  <style type="text/css">
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #div {
+      width: 30%;
+      height: 30%;
+      border:  1px solid lightgray;
+      color:  gray;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="div">
+    Highlight me :D
+  </div>
+  <script type="text/javascript">
+    animatedHighlight('div', {
+      tremble: 'horizontal',
+      trembleMode: 'hard',
+    });
+  </script>
+</body>
+</html>
