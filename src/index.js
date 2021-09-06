@@ -129,6 +129,8 @@ const trembleParams = {
   },
 };
 
+const requiredTremblePositions = ['relative', 'absolute', 'fixed'];
+
 const defaultOptions = {
   colorA: '#4BB543',
   colorB: '#ffffff',
@@ -158,9 +160,9 @@ const animatedHighlight = (element, params = {}) => {
 
   const ANIMATION_TIMEOUT = speedOptions[options.speed] || speedOptions[defaultOptions.speed];
 
-  const originalBackground = window.getComputedStyle(element).backgroundImage
+  const originalBackground = getComputedStyle(element).backgroundImage
     || element.style.backgroundImage;
-  const originalBackgroundColor = window.getComputedStyle(element).backgroundColor
+  const originalBackgroundColor = getComputedStyle(element).backgroundColor
     || element.style.backgroundColor;
 
   const pallet = generatePallet(generateGradient(options.colorA, options.colorB));
@@ -191,12 +193,14 @@ const animatedHighlight = (element, params = {}) => {
 
     if (!pallet[index]) {
       element.style.backgroundImage = originalBackground;
+      setTimeout(() => {
+        clearInterval(trembleInterval);
+        element.style.top = originalStyle.top;
+        element.style.left = originalStyle.left;
+      }, 138);
       if (options.onDone && typeof options.onDone === 'function') {
         options.onDone();
       }
-      setTimeout(() => {
-        clearInterval(trembleInterval);
-      }, 138);
       return;
     }
 
@@ -225,12 +229,13 @@ const animatedHighlight = (element, params = {}) => {
     return;
   }
 
-  // TODO: check current element position
-  element.style.position = 'relative';
+  const originalStyle = { ...getComputedStyle(element) };
 
   let trembleInterval;
 
-  if (options.tremble) {
+  const { position } = originalStyle;
+
+  if (options.tremble && requiredTremblePositions.includes(position)) {
     let trembleConfig = { ...trembleParams[defaultOptions.trembleMode] };
 
     if (trembleParams[options.trembleMode]) {
@@ -239,10 +244,12 @@ const animatedHighlight = (element, params = {}) => {
 
     let trembleCounter = 0;
 
+    const tDirection = options.tremble === 'horizontal' ? 'left' : 'top';
+    const offsetTValue = (originalStyle[tDirection] || 0).replace('px', '');
+
     trembleInterval = setInterval(() => {
-      const tDirection = options.tremble === 'horizontal' ? 'left' : 'top';
       const tValue = `${trembleCounter % 2 === 0 ? '' : '-'}${trembleConfig.value}`;
-      element.style[tDirection] = `${tValue}px`;
+      element.style[tDirection] = `${Number(tValue) + Number(offsetTValue)}px`;
       trembleCounter++;
     }, trembleConfig.speed);
   }
