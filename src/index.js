@@ -143,8 +143,7 @@ const defaultOptions = {
   onDone: null,
 };
 
-// TODO: goback to 'export default'
-const animatedHighlight = (element, params = {}) => {
+export default (element, params = {}) => {
   if (typeof element === 'string') {
     element = document.getElementById(element.replace(/^\#/, ''));
   }
